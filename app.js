@@ -10,6 +10,8 @@ const _ = require('lodash');
 var index = require('./routes/index');
 var users = require('./routes/users');
 const books = require('./routes/books');
+const passport = require('passport'),
+  Strategy = require('passport-local').Strategy;
 var app = express();
 
 mongoose.connect('mongodb://localhost/bookr');

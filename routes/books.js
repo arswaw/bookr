@@ -73,8 +73,7 @@ router.get('/find', (req, res) => {
     const author = req.query.author || "";
     const ISBN = parseInt(req.query.isbn) || 0;
 
-    console.log(emptyProp({title, author, ISBN}))
-
+    // emptyProp will remove criteria the user didn't input.
     BookModel.find(emptyProp({
         title, author, ISBN
     }), function(err, books) {
