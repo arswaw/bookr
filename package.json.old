@@ -1,0 +1,15 @@
+{
+  "name": "bookr",
+  "version": "0.0.1",
+  "description": "Backend for retrieving books.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Alex Otten",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.6"
+  }
+}
