@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const BookModel = require('./../db/models/Book');
 const IDGen = require('./../utility').generateUniqueId;
-
+const emptyProp = require('./../utility').removeEmptyObjectProperties;
 
 // Book add test
 router.post('/hamilton', (req, res) => {
@@ -69,7 +69,20 @@ router.delete('/delete', (req, res) => {
 
 // Retrieve books by Title, Author, or ISBN
 router.get('/find', (req, res) => {
-    
+    const title = req.query.title || "";
+    const author = req.query.author || "";
+    const ISBN = parseInt(req.query.isbn) || 0;
+
+    console.log(emptyProp({title, author, ISBN}))
+
+    BookModel.find(emptyProp({
+        title, author, ISBN
+    }), function(err, books) {
+        if (err) {
+            res.status(500).send("Could not retrieve books!", err);
+        }
+        res.json(books);
+    })
 })
 
 module.exports = router;
